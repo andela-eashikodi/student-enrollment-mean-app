@@ -1,0 +1,14 @@
+{
+  "name": "student-enrollment-mean-app",
+  "version": "0.0.0",
+  "homepage": "https://github.com/andela-eashikodi/student-enrollment-mean-app",
+  "authors": [
+    "andela-eashikodi <emeka.ashikodi@andela.co>"
+  ],
+  "dependencies": {
+    "angular": "1.2.x",
+    "angular-route": "1.2.x",
+    "angular-loader": "1.2.x",
+    "angular-mocks": "~1.2.x"
+  }
+}

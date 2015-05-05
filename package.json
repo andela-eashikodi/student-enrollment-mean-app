@@ -1,0 +1,33 @@
+{
+  "name": "student-enrollment-mean-app",
+  "version": "1.0.0",
+  "description": "The student enrollment system is a mean-stack application.",
+  "main": "server.js",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine-node spec",
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.12.3",
+    "express": "^4.12.3",
+    "method-override": "~2.1.2",
+    "mocha": "^2.2.4",
+    "mongoose": "^4.0.2",
+    "morgan": "~1.5.1",
+    "should": "^6.0.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/andela-eashikodi/student-enrollment-mean-app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/andela-eashikodi/student-enrollment-mean-app/issues"
+  },
+  "homepage": "https://github.com/andela-eashikodi/student-enrollment-mean-app",
+  "devDependencies": {
+    "jasmine-node": "^1.14.5",
+    "request": "^2.55.0"
+  }
+}
