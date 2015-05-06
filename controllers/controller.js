@@ -9,6 +9,16 @@ exports.getStudents = function(req, res){
   });
 };
 
+exports.findStudent = function(req, res){
+  Student.find({_id : req.params.student_id}, function(err, student){
+    if(err){
+      return res.json(err);
+    }
+    // exports.getStudents(req, res);
+    return res.json(student);
+  });
+};
+
 exports.createStudent = function(req, res){
   Student.create(req.body, function(err, student){
     if(err){
