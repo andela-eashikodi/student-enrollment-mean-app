@@ -6,7 +6,7 @@ var mongoose = require('mongoose');
 var database = require('./config/database');
 var bodyParser = require('body-parser');
 var port = process.env.PORT || 8080;
-mongoose.connect(database.url);
+mongoose.createConnection(database.url);
 
 app.use(bodyParser.urlencoded({extended: false})); // parse application/x-www-form-urlencoded
 
