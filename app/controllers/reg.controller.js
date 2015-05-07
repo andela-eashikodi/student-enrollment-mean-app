@@ -1,4 +1,4 @@
-var Student = require('../app/models/student.model');
+var Student = require('../models/student.model');
 
 exports.getStudents = function(req, res){
   Student.find({}).exec(function(err, students){
@@ -14,7 +14,6 @@ exports.findStudent = function(req, res){
     if(err){
       return res.json(err);
     }
-    // exports.getStudents(req, res);
     return res.json(student);
   });
 };

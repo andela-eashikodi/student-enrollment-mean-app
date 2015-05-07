@@ -1,22 +1,18 @@
 require('../app/models/student.model');
+require('../app/models/user.model');
 var request = require("supertest"),
 req = require("request");
-// app = require("../server");
 
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/mydatabase');
 
 var studentModel = mongoose.model('Student'), student;
+var userModel = mongoose.model('User'), student;
 
 describe('Student Model', function() {
 
   beforeEach(function(done) {
     student = new studentModel();
-    done();
-  });
-
-  afterEach(function(done){
-    mongoose.connection.close();
     done();
   });
 
@@ -28,7 +24,7 @@ describe('Student Model', function() {
     });
   });
 
-  it('should succesful accept entry', function(){
+  it('should succesful accept entry', function(done){
     student.title = 'mr';
     student.firstname = 'evan';
     student.lastname = 'appeal';
@@ -42,11 +38,29 @@ describe('Student Model', function() {
   });
 });
 
-/*
-var app = require("../../server"),
-    request = require("supertest"),
-    jwt = require("jsonwebtoken"),
-    config = require("../../config/config"),
-    req = require("request");
+describe('User Model', function(){
+  beforeEach(function(done){
+    user = new userModel();
+    done();
+  });
 
-*/
+  it('should not register invalid entry', function(done){
+    user.username = '';
+    user.save(function(err){
+      expect(err).not.toBe(null);
+      done();
+    });
+  });
+
+  it('should accept valid entry', function(){
+    user.username = 'adam';
+    user.password = 'passcode';
+    user.save(function(err){
+      expect(err).toBe(null);
+      done();
+    });
+  });
+
+});
+
+

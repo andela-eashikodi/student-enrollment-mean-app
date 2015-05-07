@@ -7,9 +7,11 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 mongoose.connect(database.url);
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.json());
 
-require('./app/routes')(app);
+require('./app/routes/user.routes')(app);
+require('./app/routes/reg.routes')(app);
 
 var port = process.env.PORT || 8080;
 

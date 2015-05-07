@@ -1,5 +1,5 @@
 module.exports = function(app){
-  var controller = require('../controllers/controller');
+  var controller = require('../controllers/reg.controller');
   //routes
   app.get('/api/v1/students', controller.getStudents);
   app.get('/api/v1/student/:student_id', controller.findStudent);
