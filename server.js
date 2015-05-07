@@ -1,16 +1,17 @@
-'use strict';
-
 var express = require('express');
 var app = express();
-var mongoose = require('mongoose');
+
 var database = require('./config/database');
 var bodyParser = require('body-parser');
-var port = process.env.PORT || 8080;
-mongoose.createConnection(database.url);
 
-app.use(bodyParser.urlencoded({extended: false})); // parse application/x-www-form-urlencoded
+var mongoose = require('mongoose');
+mongoose.connect(database.url);
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 require('./app/routes')(app);
+
+var port = process.env.PORT || 8080;
 
 app.listen(port, function(err){
   if(err){
@@ -18,3 +19,5 @@ app.listen(port, function(err){
   }
   console.log('Server started on port: ' + port);
 });
+
+module.exports = app;

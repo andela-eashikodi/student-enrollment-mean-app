@@ -3,7 +3,7 @@ module.exports = function(app){
   //routes
   app.get('/api/v1/students', controller.getStudents);
   app.get('/api/v1/student/:student_id', controller.findStudent);
-  app.post('/api/v1/student/new', controller.createStudent);
+  app.post('/api/v1/student', controller.createStudent);
   app.delete('/api/v1/student/:student_id', controller.deleteStudent);
   app.put('/api/v1/student/:student_id', controller.updateStudent);
 };
