@@ -3,7 +3,6 @@ logs/*
 libs
 node_modules
 test
-spec
 tmp
 .DS_Store
 .idea
