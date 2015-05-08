@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express');
 var app = express();
 
@@ -7,8 +9,7 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 mongoose.connect(database.url);
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({extended: false}));
 
 require('./app/routes/user.routes')(app);
 require('./app/routes/reg.routes')(app);

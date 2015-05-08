@@ -1,3 +1,5 @@
+'use strict';
+
 require('../app/models/student.model');
 require('../app/models/user.model');
 var request = require("supertest"),

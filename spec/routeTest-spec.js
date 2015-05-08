@@ -1,3 +1,5 @@
+'use strict';
+
 var app = require('../server.js'), 
 request = require('supertest')(app),
 req = require('request');
@@ -23,7 +25,27 @@ describe("reg route test", function() {
       }
       done();
     });
-    done();
+  });
+
+  it('should make a POST request and successfully create new student profile', function(done){
+    var newStudent = {
+      title: 'mr',
+      firstname: 'tee',
+      lastname: 'black',
+      gender : 'male',
+      state : 'delta',
+      dob: '11-11-2020'
+    };
+    request.post('/api/v1/student')
+    .send(newStudent)
+    .expect({lastname : 'black'})
+    .expect(200)
+    .end(function(err, res){
+     if(err){
+       return done(err);
+     }
+     done();
+   });  
   });
 });
 

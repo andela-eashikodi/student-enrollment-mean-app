@@ -1,9 +1,11 @@
+'use strict';
+
 module.exports = function(app){
-  var controller = require('../controllers/user.controller');
-  //routes
-  app.get('/api/v1/users', controller.getUsers);
-  app.get('/api/v1/user/:user_id', controller.findUser);
-  app.post('/api/v1/user', controller.createUser);
-  app.delete('/api/v1/user/:user_id', controller.deleteUser);
-  app.put('/api/v1/user/:user_id', controller.updateUser);
+  var ctrl = require('../controllers/user.controller');
+  
+  app.get('/api/v1/users', ctrl.getUsers);
+  app.get('/api/v1/user/:user_id', ctrl.findUser);
+  app.post('/api/v1/user', ctrl.createUser);
+  app.delete('/api/v1/user/:user_id', ctrl.deleteUser);
+  app.put('/api/v1/user/:user_id', ctrl.updateUser);
 };

@@ -1,4 +1,5 @@
-// var Blog = mongoose.model('Blog');
+'use strict';
+
 var mongoose = require('mongoose');
 
 var regSchema = new mongoose.Schema({
@@ -8,11 +9,11 @@ var regSchema = new mongoose.Schema({
   },
   firstname: {
     type: String,
-    required : 'enter content'
+    required : 'enter firstname'
   },
   lastname: {
     type: String,
-    required : 'enter content'
+    required : 'enter lastname'
   },
   gender: {
     type: String,

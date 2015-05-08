@@ -1,3 +1,5 @@
+'use strict';
+
 var Student = require('../models/student.model');
 
 exports.getStudents = function(req, res){
