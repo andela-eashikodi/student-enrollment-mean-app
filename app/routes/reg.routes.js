@@ -1,11 +1,18 @@
 'use strict';
+var express = require('express');
+var router = express.Router();
 
 module.exports = function(app){
-  var controller = require('../controllers/reg.controller');
+  var ctrl = require('../controllers/reg.controller');
 
-  app.get('/api/v1/students', controller.getStudents);
-  app.get('/api/v1/student/:student_id', controller.findStudent);
-  app.post('/api/v1/student', controller.createStudent);
-  app.delete('/api/v1/student/:student_id', controller.deleteStudent);
-  app.put('/api/v1/student/:student_id', controller.updateStudent);
+  router.route('/students')
+    .get(ctrl.getStudents)
+    .post(ctrl.createStudent);
+
+  router.route('/student/:student_id')
+    .get(ctrl.findStudent)
+    .put(ctrl.updateStudent)
+    .delete(ctrl.deleteStudent);
+
+  app.use('/api/v1', router);
 };

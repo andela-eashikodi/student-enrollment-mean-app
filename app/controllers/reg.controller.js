@@ -1,13 +1,15 @@
 'use strict';
 
-var Student = require('../models/student.model');
+require('../models/student.model');
+var mongoose = require('mongoose');
+var Student = mongoose.model('Student');
 
 exports.getStudents = function(req, res){
   Student.find({}).exec(function(err, students){
     if(err){
       return res.json(err);
     }
-    return res.status(201).json(students);
+    return res.json(students);
   });
 };
 
@@ -25,7 +27,7 @@ exports.createStudent = function(req, res){
     if(err){
       return res.json(err);
     }
-    exports.getStudents(req, res);
+    return res.json(student);
   });
 };
 

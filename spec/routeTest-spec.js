@@ -18,7 +18,7 @@ describe("reg route test", function() {
 
   it('should make a GET request and return created http status', function(done){
     request.get('/api/v1/students')
-    .expect(201)
+    .expect(200)
     .end(function(err,res){
       if(err){
         return done(err);
@@ -36,9 +36,8 @@ describe("reg route test", function() {
       state : 'delta',
       dob: '11-11-2020'
     };
-    request.post('/api/v1/student')
+    request.post('/api/v1/students')
     .send(newStudent)
-    .expect({lastname : 'black'})
     .expect(200)
     .end(function(err, res){
      if(err){
@@ -63,7 +62,7 @@ describe("user route test", function() {
 
   it('should make a GET request and return created http status', function(done){
     request.get('/api/v1/users')
-    .expect(201)
+    .expect(200)
     .end(function(err,res){
       if(err){
         return done(err);

@@ -24,4 +24,4 @@ var userSchema = new mongoose.Schema({
     required : 'enter password'
   }
 });
-module.exports = mongoose.model('User', userSchema);
+mongoose.model('User', userSchema);

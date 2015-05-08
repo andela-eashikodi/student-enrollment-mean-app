@@ -28,4 +28,4 @@ var regSchema = new mongoose.Schema({
     required : 'enter date of birth'
   }
 });
-module.exports = mongoose.model('Student', regSchema);
+mongoose.model('Student', regSchema);

@@ -1,13 +1,15 @@
 'use strict';
 
-var User = require('../models/user.model');
+require('../models/user.model');
+var mongoose = require('mongoose');
+var User = mongoose.model('User');
 
 exports.getUsers = function(req, res){
   User.find({}).exec(function(err, users){
     if(err){
       return res.json(err);
     }
-    return res.status(201).json(users);
+    return res.json(users);
   });
 };
 
