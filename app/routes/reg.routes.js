@@ -7,7 +7,8 @@ module.exports = function(app){
 
   router.route('/students')
     .get(ctrl.getStudents)
-    .post(ctrl.createStudent);
+    .post(ctrl.createStudent)
+    .delete(ctrl.deleteAll);
 
   router.route('/student/:student_id')
     .get(ctrl.findStudent)

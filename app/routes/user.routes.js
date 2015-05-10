@@ -7,7 +7,8 @@ module.exports = function(app){
 
   router.route('/users')
     .get(ctrl.getUsers)
-    .post(ctrl.createUser);
+    .post(ctrl.createUser)
+    .delete(ctrl.deleteAll);
 
   router.route('/user/:user_id')
     .get(ctrl.findUser)

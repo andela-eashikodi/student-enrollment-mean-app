@@ -31,6 +31,15 @@ exports.createStudent = function(req, res){
   });
 };
 
+exports.deleteAll = function(req, res){
+  Student.remove(function(err, student){
+    if(err){
+      return res.json(err);
+    }
+    exports.getStudents(req, res);
+  });
+};
+
 exports.deleteStudent = function(req, res){
   Student.remove({_id : req.params.student_id}, function(err, student){
     if(err){

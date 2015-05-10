@@ -31,6 +31,15 @@ exports.createUser = function(req, res){
   });
 };
 
+exports.deleteAll = function(req, res){
+  User.remove(function(err, users){
+    if(err){
+      return res.json(err);
+    }
+    exports.getUsers(req, res);
+  });
+};
+
 exports.deleteUser = function(req, res){
   User.remove({_id : req.params.user_id}, function(err, user){
     if(err){

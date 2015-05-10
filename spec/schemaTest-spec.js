@@ -8,8 +8,9 @@ req = require("request");
 var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost/mydatabase');
 
-var studentModel = mongoose.model('Student'), student;
-var userModel = mongoose.model('User'), student;
+var studentModel = mongoose.model('Student');
+var userModel = mongoose.model('User');
+var student, user;
 
 describe('Student Model', function() {
 
