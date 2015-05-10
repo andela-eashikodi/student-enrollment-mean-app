@@ -33,6 +33,7 @@ describe("STUDENT_REG route test", function() {
     .expect(200)
     .expect('Content-Type', /json/)
     .end(function(err, res){
+      expect({success:true});
       expect(err).toBe(null);
       done();
     });
