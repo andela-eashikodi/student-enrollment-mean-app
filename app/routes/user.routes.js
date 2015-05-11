@@ -5,6 +5,9 @@ var router = express.Router();
 module.exports = function(app){
   var ctrl = require('../controllers/user.controller');
 
+  router.route('/authenticate')
+    .post(ctrl.auth);
+
   router.route('/users')
     .get(ctrl.getUsers)
     .post(ctrl.createUser)

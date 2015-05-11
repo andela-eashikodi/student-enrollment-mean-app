@@ -5,8 +5,13 @@ process.env.NODE_ENV = process.env.NODE_ENV || 'development';
 var express = require('express');
 var app = express();
 
+var morgan = require('morgan');
+
 var database = require('./config/database');
 var bodyParser = require('body-parser');
+
+var jwt = require('jsonwebtoken');
+app.use(morgan('dev'));
 
 var mongoose = require('mongoose');
 mongoose.connect(process.env.MONGOLAB_URI || database.url);

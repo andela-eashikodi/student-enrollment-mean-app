@@ -13,9 +13,10 @@
   "dependencies": {
     "body-parser": "^1.12.3",
     "express": "^4.12.3",
+    "jsonwebtoken": "^5.0.0",
     "method-override": "~2.1.2",
     "mongoose": "^4.0.2",
-    "morgan": "~1.5.1"
+    "morgan": "^1.5.3"
   },
   "engines": {
     "node": "0.12.2"
