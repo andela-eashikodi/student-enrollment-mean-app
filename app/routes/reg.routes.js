@@ -4,16 +4,17 @@ var router = express.Router();
 
 module.exports = function(app){
   var ctrl = require('../controllers/reg.controller');
+  var user = require('../controllers/user.controller');
 
   router.route('/students')
-    .get(ctrl.getStudents)
-    .post(ctrl.createStudent)
-    .delete(ctrl.deleteAll);
+    .get(user.verifyToken, ctrl.getStudents)
+    .post(user.verifyToken, ctrl.createStudent)
+    .delete(user.verifyToken, ctrl.deleteAll);
 
   router.route('/student/:student_id')
-    .get(ctrl.findStudent)
-    .put(ctrl.updateStudent)
-    .delete(ctrl.deleteStudent);
+    .get(user.verifyToken, ctrl.findStudent)
+    .put(user.verifyToken, ctrl.updateStudent)
+    .delete(user.verifyToken, ctrl.deleteStudent);
 
   app.use('/api/v1', router);
 };
