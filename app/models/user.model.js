@@ -23,5 +23,5 @@ var userSchema = new mongoose.Schema({
     type: String,
     required : 'enter password'
   }
-});
+}, { versionKey: false });
 mongoose.model('User', userSchema);

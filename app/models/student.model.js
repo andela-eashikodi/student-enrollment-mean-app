@@ -23,5 +23,5 @@ var regSchema = new mongoose.Schema({
     type: Date,
     required : 'enter date of birth'
   }
-});
+}, { versionKey: false });
 mongoose.model('Student', regSchema);
