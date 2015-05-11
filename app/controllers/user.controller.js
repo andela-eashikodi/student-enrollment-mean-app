@@ -12,7 +12,9 @@ var User = mongoose.model('User');
 
 exports.auth = function(req, res) {
   User.findOne({username: req.body.username}, function(err, user){
-    if(err) throw err;
+    if(err) {
+      res.json(err);
+    }
 
     if(!user) {
       res.json({success: false, message: 'auth failed'});
@@ -31,6 +33,8 @@ exports.auth = function(req, res) {
           message: 'token Created',
           token:token
         });
+
+
       }
     }
   })
@@ -68,7 +72,7 @@ exports.getUsers = function(req, res){
 };
 
 exports.findUser = function(req, res){
-  User.find({_id : req.params.user_id}, function(err, user){
+  User.find({username : req.params.username}, function(err, user){
     if(err){
       return res.json(err);
     }
@@ -77,11 +81,21 @@ exports.findUser = function(req, res){
 };
 
 exports.createUser = function(req, res){
-  User.create(req.body, function(err, user){
-    if(err){
-      return res.json(err);
+  User.findOne({username: req.body.username}, function(err, user){
+    if(user) {
+      res.json({
+        sucess:false,
+        message: 'username taken'
+      });
     }
-    return res.json(user);
+    else {
+      User.create(req.body, function(err, user){
+        if(err){
+          return res.json(err);
+        }
+        return res.json(user);
+      });
+    }
   });
 };
 
@@ -95,7 +109,7 @@ exports.deleteAll = function(req, res){
 };
 
 exports.deleteUser = function(req, res){
-  User.remove({_id : req.params.user_id}, function(err, user){
+  User.remove({username : req.params.username}, function(err, user){
     if(err){
       return res.json(err);
     }
@@ -104,7 +118,7 @@ exports.deleteUser = function(req, res){
 };
 
 exports.updateUser = function(req, res){
-  User.update({_id : req.params.user_id}, req.body, function(err, user){
+  User.update({username : req.params.username}, req.body, function(err, user){
     if(err){
       return res.json(err);
     }
