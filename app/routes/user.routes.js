@@ -5,15 +5,18 @@ var router = express.Router();
 module.exports = function(app){
   var ctrl = require('../controllers/user.controller');
 
-  router.route('/users')
-    .get(ctrl.getUsers)
-    .post(ctrl.createUser)
-    .delete(ctrl.deleteAll);
+  router.route('/authenticate')
+    .post(ctrl.auth);
 
-  router.route('/user/:user_id')
-    .get(ctrl.findUser)
-    .put(ctrl.updateUser)
-    .delete(ctrl.deleteUser);
+  router.route('/users')
+    .get(ctrl.verifyToken, ctrl.getUsers)
+    .post(ctrl.createUser)
+    .delete(ctrl.verifyToken, ctrl.deleteAll);
+
+  router.route('/user/:username')
+    .get(ctrl.verifyToken, ctrl.findUser)
+    .put(ctrl.verifyToken, ctrl.updateUser)
+    .delete(ctrl.verifyToken, ctrl.deleteUser);
 
   app.use('/api/v1', router);
 };
