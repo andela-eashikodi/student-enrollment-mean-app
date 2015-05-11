@@ -1,5 +1,7 @@
 'use strict';
 
+process.env.NODE_ENV = process.env.NODE_ENV || 'development';
+
 var express = require('express');
 var app = express();
 
@@ -7,7 +9,7 @@ var database = require('./config/database');
 var bodyParser = require('body-parser');
 
 var mongoose = require('mongoose');
-mongoose.connect(database.url);
+mongoose.connect(process.env.MONGOLAB_URI || database.url);
 
 app.use(bodyParser.urlencoded({extended: false}));
 
