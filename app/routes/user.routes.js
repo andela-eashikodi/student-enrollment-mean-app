@@ -9,14 +9,14 @@ module.exports = function(app){
     .post(ctrl.auth);
 
   router.route('/users')
-    .get(ctrl.getUsers)
-    .post(ctrl.createUser)
-    .delete(ctrl.deleteAll);
+    .get(ctrl.verifyToken, ctrl.getUsers)
+    .post(ctrl.verifyToken, ctrl.createUser)
+    .delete(ctrl.verifyToken, ctrl.deleteAll);
 
   router.route('/user/:user_id')
-    .get(ctrl.findUser)
-    .put(ctrl.updateUser)
-    .delete(ctrl.deleteUser);
+    .get(ctrl.verifyToken, ctrl.findUser)
+    .put(ctrl.verifyToken, ctrl.updateUser)
+    .delete(ctrl.verifyToken, ctrl.deleteUser);
 
   app.use('/api/v1', router);
 };
