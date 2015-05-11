@@ -33,8 +33,6 @@ exports.auth = function(req, res) {
           message: 'token Created',
           token:token
         });
-
-
       }
     }
   })

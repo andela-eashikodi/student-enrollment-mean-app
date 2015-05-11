@@ -17,6 +17,6 @@ module.exports = function(app){
     .get(ctrl.verifyToken, ctrl.findUser)
     .put(ctrl.verifyToken, ctrl.updateUser)
     .delete(ctrl.verifyToken, ctrl.deleteUser);
-
+    
   app.use('/api/v1', router);
 };

@@ -20,7 +20,7 @@ describe('Student Model', function() {
   });
 
   it('should throw an error if any field empty', function(done){
-    student.title = '';
+    student.regnumber = '';
     student.save(function(err){
       expect(err).not.toBe(null);
       done();
@@ -28,7 +28,7 @@ describe('Student Model', function() {
   });
 
   it('should succesful accept entry', function(done){
-    student.title = 'mr';
+    student.regnumber = '0002';
     student.firstname = 'evan';
     student.lastname = 'appeal';
     student.gender = 'female';
@@ -41,7 +41,7 @@ describe('Student Model', function() {
   });
 });
 
-describe('User Model', function(){
+describe('User Model', function(done){
   beforeEach(function(done){
     user = new userModel();
     done();
@@ -55,7 +55,10 @@ describe('User Model', function(){
     });
   });
 
-  it('should accept valid entry', function(){
+  it('should accept valid entry', function(done){
+    user.firstname = 'adam';
+    user.lastname = 'johnson';
+    user.email = 'adj@yahoo.com';
     user.username = 'adam';
     user.password = 'passcode';
     user.save(function(err){
