@@ -35,8 +35,8 @@ exports.auth = function(req, res) {
         });
       }
     }
-  })
-}
+  });
+};
 
 exports.verifyToken = function(req, res, next){
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
@@ -44,7 +44,7 @@ exports.verifyToken = function(req, res, next){
   if(token) {
     jwt.verify(token, config.secret, function(err, decoded) {
       if(err) {
-        return res.json({success: false, message: 'Failed to auth token'})
+        return res.json({success: false, message: 'Failed to auth token'});
       }
       else {
         req.decoded = decoded;

@@ -23,7 +23,7 @@ exports.findStudent = function(req, res){
 };
 
 exports.createStudent = function(req, res){
-  Student.findOne({regnumber: req.params.regnumber}, function(err, student){
+  Student.findOne({regnumber: req.body.regnumber}, function(err, student){
     if(student){
       res.json({
         success: false,
