@@ -5,7 +5,8 @@ var mongoose = require('mongoose');
 var regSchema = new mongoose.Schema({
   regnumber: {
     type: Number,
-    required: 'enter student registration number'
+    required: 'enter student registration number',
+    unique: 'reg num in use'
   },
   firstname: {
     type: String,

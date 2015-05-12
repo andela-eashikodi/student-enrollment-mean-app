@@ -17,7 +17,8 @@ var userSchema = new mongoose.Schema({
   },
   username:{
     type: String,
-    required: 'enter username'
+    required: 'enter username',
+    unique: 'username taken'
   },
   password: {
     type: String,

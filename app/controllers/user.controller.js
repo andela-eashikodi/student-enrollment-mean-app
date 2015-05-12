@@ -4,7 +4,7 @@ require('../../server');
 var express = require('express');
 var app = express();
 var jwt = require('jsonwebtoken');
-var config = require('../../config/database');
+var config = require('../../config/config');
 
 require('../models/user.model');
 var mongoose = require('mongoose');
@@ -24,7 +24,7 @@ exports.auth = function(req, res) {
         res.json ({success:false, message: 'Auth failed. wrong password'});
       }
       else {
-        var token = jwt.sign(user, config.secret,{
+        var token = jwt.sign(user, config[process.env.NODE_ENV]['secret'],{
           expiresInMinutes:1440
         });
 
@@ -42,7 +42,7 @@ exports.verifyToken = function(req, res, next){
   var token = req.body.token || req.query.token || req.headers['x-access-token'];
 
   if(token) {
-    jwt.verify(token, config.secret, function(err, decoded) {
+    jwt.verify(token, config[process.env.NODE_ENV]['secret'], function(err, decoded) {
       if(err) {
         return res.json({success: false, message: 'Failed to auth token'});
       }

@@ -2,11 +2,9 @@
 
 require('../app/models/student.model');
 require('../app/models/user.model');
-var request = require("supertest"),
-req = require("request");
 
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/mydatabase');
+// mongoose.connect('mongodb://localhost/mydatabase');
 
 var studentModel = mongoose.model('Student');
 var userModel = mongoose.model('User');

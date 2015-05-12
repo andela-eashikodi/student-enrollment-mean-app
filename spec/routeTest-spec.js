@@ -97,5 +97,4 @@ describe("USER route test", function() {
       done();
     });
   });
-
 });
