@@ -51,7 +51,7 @@ exports.deleteAll = function(req, res){
 };
 
 exports.deleteStudent = function(req, res){
-  Student.remove({_id : req.params.student_id}, function(err, student){
+  Student.findByIdAndRemove({_id : req.params.student_id}, function(err, student){
     if(err){
       return res.json(err);
     }

@@ -34,6 +34,10 @@ mongoose.connect(process.env.MONGOLAB_URI || database.url);
 
 app.use(bodyParser.urlencoded({extended: false}));
 
+app.get('/', function(req, res){
+  res.send('welcome to student enrollment system');
+});
+
 app.get('/auth/google', passport.authenticate('google', {
   scope: [
   'https://www.googleapis.com/auth/userinfo.profile'
