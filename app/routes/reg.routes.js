@@ -11,7 +11,7 @@ module.exports = function(app){
     .post(user.verifyToken, ctrl.createStudent)
     .delete(user.verifyToken, ctrl.deleteAll);
 
-  router.route('/student/:student_id')
+  router.route('/student/:regnumber')
     .get(user.verifyToken, ctrl.findStudent)
     .put(user.verifyToken, ctrl.updateStudent)
     .delete(user.verifyToken, ctrl.deleteStudent);

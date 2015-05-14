@@ -20,7 +20,8 @@ exports.auth = function(req, res) {
       res.json({success: false, message: 'auth failed'});
     }
     else if (user) {
-      if (user.password != req.body.password) {
+      var validPassword = user.comparePassword(req.body.password);
+      if (!validPassword) {
         res.json ({success:false, message: 'Auth failed. wrong password'});
       }
       else {
@@ -44,7 +45,7 @@ exports.verifyToken = function(req, res, next){
   if(token) {
     jwt.verify(token, config[process.env.NODE_ENV]['secret'], function(err, decoded) {
       if(err) {
-        return res.json({success: false, message: 'Failed to auth token'});
+        return res.json({success: false, message: 'Failed to authenticate'});
       }
       else {
         req.decoded = decoded;

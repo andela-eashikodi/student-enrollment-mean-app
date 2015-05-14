@@ -6,7 +6,7 @@ var regSchema = new mongoose.Schema({
   regnumber: {
     type: Number,
     required: 'enter student registration number',
-    unique: 'reg num in use'
+    index: {unique: true}
   },
   firstname: {
     type: String,
@@ -20,6 +20,18 @@ var regSchema = new mongoose.Schema({
     type: String,
     required: 'Enter Gender'
   },
+  phone: {
+    type: Number,
+    required: true
+  },
+  email: {
+    type: String,
+    default: 'no email'
+  },
+  address : {
+    type: String,
+    required : true
+  },
   state: {
     type: String,
     required : 'enter state of origin'
@@ -27,6 +39,25 @@ var regSchema = new mongoose.Schema({
   dob: {
     type: Date,
     required : 'enter date of birth'
-  }
+  },
+  created_at: Date,
+
+  updated_at: Date
+
 }, { versionKey: false });
+
+regSchema.pre('save', function(next) {
+  
+  var currentDate = new Date();
+  
+  this.updated_at = currentDate;
+
+  if (!this.created_at){
+    this.created_at = currentDate;
+  }
+
+  next();
+});
+
+
 mongoose.model('Student', regSchema);

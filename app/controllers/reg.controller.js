@@ -14,7 +14,7 @@ exports.getStudents = function(req, res){
 };
 
 exports.findStudent = function(req, res){
-  Student.find({_id : req.params.student_id}, function(err, student){
+  Student.find({regnumber : req.params.regnumber}, function(err, student){
     if(err){
       return res.json(err);
     }
@@ -60,7 +60,7 @@ exports.deleteStudent = function(req, res){
 };
 
 exports.updateStudent = function(req, res){
-  Student.update({_id : req.params.student_id}, req.body, function(err, student){
+  Student.update({regnumber : req.params.regnumber}, req.body, function(err, student){
     if(err){
       return res.json(err);
     }
