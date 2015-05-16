@@ -24,12 +24,25 @@ var userSchema = new mongoose.Schema({
   password: {
     type: String,
     required : 'enter password'
-  }
+  },
+
+  created_at: Date,
+
+  updated_at: Date
   
 }, { versionKey: false });
 
 userSchema.pre('save', function(next){
   var user = this;
+
+  var currentDate = new Date();
+  
+  user.updated_at = currentDate;
+
+  if (!user.created_at){
+    user.created_at = currentDate;
+  }
+
   if(!user.isModified('password')){
     return next();
   }
