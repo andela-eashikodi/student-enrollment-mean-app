@@ -71,7 +71,7 @@ exports.getUsers = function(req, res){
 };
 
 exports.findUser = function(req, res){
-  User.find({username : req.params.username}, function(err, user){
+  User.find({username : req.body.username}, function(err, user){
     if(err){
       return res.json(err);
     }
@@ -112,7 +112,10 @@ exports.deleteUser = function(req, res){
     if(err){
       return res.json(err);
     }
-    exports.getUsers(req, res);
+    res.json({
+      success: true,
+      message: 'user deleted'
+    });
   });
 };
 

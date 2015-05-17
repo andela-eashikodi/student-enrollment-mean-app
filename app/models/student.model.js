@@ -21,8 +21,7 @@ var regSchema = new mongoose.Schema({
     required: 'Enter Gender'
   },
   phone: {
-    type: Number,
-    required: true
+    type: Number
   },
   email: {
     type: String,

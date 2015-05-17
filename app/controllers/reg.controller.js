@@ -14,7 +14,7 @@ exports.getStudents = function(req, res){
 };
 
 exports.findStudent = function(req, res){
-  Student.find({regnumber : req.params.regnumber}, function(err, student){
+  Student.find({regnumber : req.body.regnumber}, function(err, student){
     if(err){
       return res.json(err);
     }
@@ -51,19 +51,22 @@ exports.deleteAll = function(req, res){
 };
 
 exports.deleteStudent = function(req, res){
-  Student.findByIdAndRemove({_id : req.params.student_id}, function(err, student){
+  Student.findByIdAndRemove({regnumber : req.body.regnumber}, function(err, student){
     if(err){
       return res.json(err);
     }
-    exports.getStudents(req, res);
+    res.json({
+      success: true,
+      message: 'student deleted'
+    });
   });
 };
 
 exports.updateStudent = function(req, res){
-  Student.update({regnumber : req.params.regnumber}, req.body, function(err, student){
+  Student.update({regnumber : req.body.regnumber}, req.body, function(err, student){
     if(err){
       return res.json(err);
     }
-    exports.getStudents(req, res);
+    res.json(student);
   });
 };
