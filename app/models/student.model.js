@@ -29,8 +29,7 @@ var regSchema = new mongoose.Schema({
     default: 'no email'
   },
   address : {
-    type: String,
-    required : true
+    type: String
   },
   state: {
     type: String,
