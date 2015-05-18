@@ -26,8 +26,6 @@ var userSchema = new mongoose.Schema({
     required : 'enter password'
   },
 
-  key: String,
-
   created_at: Date,
 
   updated_at: Date
@@ -52,7 +50,6 @@ userSchema.pre('save', function(next){
     if (err){
       return next(err);
     }
-    user.key = user.password;
     user.password = hash;
     next();
   });
