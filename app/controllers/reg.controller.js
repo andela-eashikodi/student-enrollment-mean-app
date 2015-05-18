@@ -67,6 +67,6 @@ exports.updateStudent = function(req, res){
     if(err){
       return res.json(err);
     }
-    res.json(student);
+    exports.findStudent(req, res);
   });
 };

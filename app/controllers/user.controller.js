@@ -124,6 +124,6 @@ exports.updateUser = function(req, res){
     if(err){
       return res.json(err);
     }
-    return res.json(user);
+    exports.findUser(req, res);
   });
 };
