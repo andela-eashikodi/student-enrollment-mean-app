@@ -71,7 +71,7 @@ exports.getUsers = function(req, res){
 };
 
 exports.findUser = function(req, res){
-  User.find({username : req.body.username}, function(err, user){
+  User.find({username: req.params.username}, function(err, user){
     if(err){
       return res.json(err);
     }
@@ -80,7 +80,7 @@ exports.findUser = function(req, res){
 };
 
 exports.createUser = function(req, res){
-  User.findOne({username: req.body.username}, function(err, user){
+  User.findOne({username: req.params.username}, function(err, user){
     if(user) {
       res.json({
         sucess:false,
