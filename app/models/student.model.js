@@ -24,8 +24,7 @@ var regSchema = new mongoose.Schema({
     type: Number
   },
   email: {
-    type: String,
-    default: 'no email'
+    type: String
   },
   address : {
     type: String
